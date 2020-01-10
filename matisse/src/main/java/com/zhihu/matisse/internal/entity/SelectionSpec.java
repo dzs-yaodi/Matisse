@@ -28,6 +28,7 @@ import com.zhihu.matisse.listener.OnCheckedListener;
 import com.zhihu.matisse.listener.OnSelectedListener;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public final class SelectionSpec {
@@ -58,6 +59,7 @@ public final class SelectionSpec {
     public boolean showPreview;
 
     public String turnToClass;
+    public Map<String,String> map;
 
     private SelectionSpec() {
     }

@@ -35,7 +35,9 @@ import com.zhihu.matisse.internal.ui.widget.MediaGridInset;
 import com.zhihu.matisse.internal.utils.UIUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CustomVideoActivity extends AppCompatActivity implements AlbumCollection.AlbumCallbacks, AlbumMediaCollection.AlbumMediaCallbacks {
 
@@ -62,6 +64,7 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
     private int length = 0;
     //需要跳转的页面地址
     private String className;
+    private Map<String,String> objectMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +112,10 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
         if (getIntent().hasExtra("class_name")) {
             className = getIntent().getStringExtra("class_name");
         }
+
+        if (getIntent().hasExtra("key_value")){
+            objectMap = (Map<String, String>) getIntent().getSerializableExtra("key_value");
+        }
         setListener();
     }
 
@@ -125,6 +132,11 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
                     ComponentName comp = new ComponentName(this, className);
                     intent.setComponent(comp);
                     intent.setAction("android.intent.action.VIEW");
+                    if (objectMap != null) {
+                        for (Map.Entry<String, String> entry : objectMap.entrySet()) {
+                            intent.putExtra(entry.getKey(), entry.getValue());
+                        }
+                    }
                     startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();

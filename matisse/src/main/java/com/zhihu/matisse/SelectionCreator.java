@@ -36,9 +36,11 @@ import com.zhihu.matisse.listener.OnSelectedListener;
 import com.zhihu.matisse.ui.CustomVideoActivity;
 import com.zhihu.matisse.ui.MatisseActivity;
 
+import java.io.Serializable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_BEHIND;
@@ -346,12 +348,22 @@ public final class SelectionCreator {
     }
 
     /**
-     * 设置需要跳转的activity地址
+     * 设置需要跳转的activity地址,以及需要的参数
      * @param className
      * @return
      */
     public SelectionCreator setTurnToClass(@Nullable String className){
         mSelectionSpec.turnToClass = className;
+        return this;
+    }
+
+    /**
+     * 设置需要跳转页面时带的参数
+     * @param map
+     * @return
+     */
+    public SelectionCreator setKeyValues(Map<String,String> map){
+        mSelectionSpec.map = map;
         return this;
     }
 
@@ -371,6 +383,9 @@ public final class SelectionCreator {
             intent.setClass(activity, CustomVideoActivity.class);
             if (!TextUtils.isEmpty(mSelectionSpec.turnToClass)) {
                 intent.putExtra("class_name", mSelectionSpec.turnToClass);
+                if (mSelectionSpec.map !=null) {
+                    intent.putExtra("key_value", (Serializable) mSelectionSpec.map);
+                }
             }
         }else{
             intent.setClass(activity, MatisseActivity.class);

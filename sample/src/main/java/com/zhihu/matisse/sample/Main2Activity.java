@@ -16,6 +16,7 @@ public class Main2Activity extends AppCompatActivity {
         TextView text = findViewById(R.id.text);
         String url = getIntent().getStringExtra(CustomVideoActivity.EXTRA_RESULT_VIDEO_URI);
 
-        text.setText(url);
+        String title = getIntent().getStringExtra("title");
+        text.setText(title + ":"+url);
     }
 }

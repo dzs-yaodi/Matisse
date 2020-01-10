@@ -40,7 +40,9 @@ import com.zhihu.matisse.filter.Filter;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 import com.zhihu.matisse.ui.CustomVideoActivity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SampleActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -138,6 +140,9 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.video:
+
+                Map<String,String> maps = new HashMap<>();
+                maps.put("title","地址");
                 Matisse.from(SampleActivity.this)
                         .choose(MimeType.ofVideo())
                         .theme(R.style.Matisse_Dracula)
@@ -149,6 +154,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
 //                        .maxOriginalSize(10)
                         .imageEngine(new GlideEngine())
                         .setTurnToClass("com.zhihu.matisse.sample.Main2Activity")
+                        .setKeyValues(maps)
                         .forResult(REQUEST_CODE_CHOOSE);
                 break;
             default:
