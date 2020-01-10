@@ -1,5 +1,6 @@
 package com.zhihu.matisse.ui;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
@@ -58,6 +60,8 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
     private TextView tvProgress;
     //视频长度
     private int length = 0;
+    //需要跳转的页面地址
+    private String className;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +106,10 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
         customAlbumAdapter = new CustomAlbumAdapter(this);
         mRecyclerView.setAdapter(customAlbumAdapter);
 
+        if (getIntent().hasExtra("class_name")) {
+            className = getIntent().getStringExtra("class_name");
+        }
         setListener();
-
     }
 
     private void setListener() {
@@ -113,8 +119,19 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
 
         tvNext.setOnClickListener(v -> {
             Intent intent = new Intent();
-            intent.putExtra(EXTRA_RESULT_VIDEO_URI,UIUtils.getRealPathFromUri(items.get(selectIndex).uri,this));
-            setResult(RESULT_OK, intent);
+            intent.putExtra(EXTRA_RESULT_VIDEO_URI, UIUtils.getRealPathFromUri(items.get(selectIndex).uri, this));
+            if (!TextUtils.isEmpty(className)) {
+                try {
+                    ComponentName comp = new ComponentName(this, className);
+                    intent.setComponent(comp);
+                    intent.setAction("android.intent.action.VIEW");
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                setResult(RESULT_OK, intent);
+            }
             finish();
         });
 
@@ -133,7 +150,7 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
 
             setVideoDetails(position);
 
-            if (timer != null){
+            if (timer != null) {
                 timer.cancel();
                 timer = null;
             }
@@ -145,8 +162,8 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser){
-                    videoView.seekTo(progress*1000);
+                if (fromUser) {
+                    videoView.seekTo(progress * 1000);
                 }
             }
 
@@ -162,14 +179,14 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
         });
     }
 
-    private void videoState(){
-        if (videoView.isPlaying()){
+    private void videoState() {
+        if (videoView.isPlaying()) {
             videoView.pause();
 
             ivPlay1.setImageResource(R.drawable.matisse_video_play_large);
             ivPlay2.setImageResource(R.drawable.matisse_video_play_small);
             ivPlay1.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             videoView.start();
             downTime();
             ivPlay1.setVisibility(View.GONE);
@@ -190,11 +207,11 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
         mAlbumCollection.onDestroy();
         mAlbumMediaCollection.onDestroy();
 
-        if (videoView.isPlaying()){
+        if (videoView.isPlaying()) {
             videoView.stopPlayback();
         }
 
-        if (timer != null){
+        if (timer != null) {
             timer.cancel();
             timer = null;
         }
@@ -253,6 +270,7 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
 
     /**
      * 设置视频的uri,长度,时间等
+     *
      * @param index
      */
     private void setVideoDetails(int index) {
@@ -267,22 +285,22 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
 
     }
 
-    private void downTime(){
+    private void downTime() {
 
         long videoLength = length * 1000;
-        timer = new CountDownTimer(videoLength,1000) {
+        timer = new CountDownTimer(videoLength, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
                 int playTimes = videoView.getCurrentPosition() / 1000;
 
-                if (playTimes >= length){
+                if (playTimes >= length) {
                     tvProgress.setText(DateUtils.formatElapsedTime(length));
                     if (timer != null) {
                         timer.cancel();
                         timer = null;
                     }
-                }else{
+                } else {
                     tvProgress.setText(DateUtils.formatElapsedTime(playTimes));
                     mSeekBar.setProgress(playTimes);
                 }

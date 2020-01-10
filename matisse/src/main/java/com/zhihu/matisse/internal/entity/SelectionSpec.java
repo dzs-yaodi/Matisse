@@ -57,6 +57,8 @@ public final class SelectionSpec {
     public OnCheckedListener onCheckedListener;
     public boolean showPreview;
 
+    public String turnToClass;
+
     private SelectionSpec() {
     }
 

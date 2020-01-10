@@ -25,6 +25,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 
 import com.zhihu.matisse.engine.ImageEngine;
 import com.zhihu.matisse.filter.Filter;
@@ -238,7 +239,7 @@ public final class SelectionCreator {
 
     /**
      * Capture strategy provided for the location to save photos including internal and external
-     * storage and also a authority for {@link androidx.core.content.FileProvider}.
+     * storage and also a authority for {@link }.
      *
      * @param captureStrategy {@link CaptureStrategy}, needed only when capturing is enabled.
      * @return {@link SelectionCreator} for fluent API.
@@ -345,6 +346,16 @@ public final class SelectionCreator {
     }
 
     /**
+     * 设置需要跳转的activity地址
+     * @param className
+     * @return
+     */
+    public SelectionCreator setTurnToClass(@Nullable String className){
+        mSelectionSpec.turnToClass = className;
+        return this;
+    }
+
+    /**
      * Start to select media and wait for result.
      *
      * @param requestCode Identity of the request Activity or Fragment.
@@ -358,6 +369,9 @@ public final class SelectionCreator {
 
         if (mSelectionSpec.mimeTypeSet.contains(MimeType.MP4)){
             intent.setClass(activity, CustomVideoActivity.class);
+            if (!TextUtils.isEmpty(mSelectionSpec.turnToClass)) {
+                intent.putExtra("class_name", mSelectionSpec.turnToClass);
+            }
         }else{
             intent.setClass(activity, MatisseActivity.class);
         }
