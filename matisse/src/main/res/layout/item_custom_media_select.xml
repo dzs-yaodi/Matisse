@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/media_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <View
+        android:id="@+id/view_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/media_video_slect_bg"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/video_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:textColor="#fff"
+        android:text="111"
+        android:textSize="12sp" />
+
+</FrameLayout>

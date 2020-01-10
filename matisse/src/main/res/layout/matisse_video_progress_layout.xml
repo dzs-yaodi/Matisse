@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_cancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消"
+        android:textColor="#fff"
+        android:padding="12dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下一步"
+        android:textColor="#fff"
+        android:layout_gravity="right"
+        android:layout_margin="12dp"
+        android:background="@drawable/matisse_video_seleect_next_bg"
+        />
+
+    <ImageView
+        android:id="@+id/image_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/matisse_video_play_large"
+        android:layout_gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:id="@+id/image_play1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/matisse_video_play_small"/>
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:layout_gravity="center_vertical"
+            android:text="00:00"
+            android:layout_marginStart="10dp"
+            />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:minHeight="3dp"
+            android:maxHeight="3dp"
+            android:layout_margin="10dp"
+            android:progressDrawable="@drawable/matisse_video_seekbar_background"
+            android:thumb="@drawable/matisse_video__seebar_shape"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+</FrameLayout>
