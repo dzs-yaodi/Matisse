@@ -20,10 +20,10 @@ import android.content.pm.ActivityInfo;
 import android.support.annotation.StyleRes;
 
 import com.sobey.matisse.MimeType;
+import com.sobey.matisse.R;
 import com.sobey.matisse.engine.ImageEngine;
 import com.sobey.matisse.engine.impl.GlideEngine;
 import com.sobey.matisse.filter.Filter;
-import com.zhihu.matisse.R;
 import com.sobey.matisse.listener.OnCheckedListener;
 import com.sobey.matisse.listener.OnSelectedListener;
 
@@ -78,7 +78,7 @@ public final class SelectionSpec {
         mimeTypeSet = null;
         mediaTypeExclusive = true;
         showSingleMediaType = false;
-        themeId = R.style.Matisse_Zhihu;
+        themeId = R.style.Matisse_sobey;
         orientation = 0;
         countable = false;
         maxSelectable = 1;

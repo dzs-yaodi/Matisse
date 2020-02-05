@@ -26,9 +26,9 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.Album;
 import com.sobey.matisse.internal.entity.SelectionSpec;
-import com.zhihu.matisse.R;
 
 public class AlbumsAdapter extends CursorAdapter {
 

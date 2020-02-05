@@ -20,12 +20,12 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.IncapableCause;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.entity.SelectionSpec;
 import com.sobey.matisse.internal.utils.PathUtils;
 import com.sobey.matisse.internal.utils.PhotoMetadataUtils;
-import com.zhihu.matisse.R;
 import com.sobey.matisse.internal.ui.widget.CheckView;
 
 import java.util.ArrayList;

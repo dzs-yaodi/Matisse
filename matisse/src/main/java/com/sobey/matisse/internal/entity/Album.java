@@ -23,7 +23,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 
-import com.zhihu.matisse.R;
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.loader.AlbumLoader;
 
 public class Album implements Parcelable {

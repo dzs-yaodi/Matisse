@@ -21,7 +21,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.zhihu.matisse.R;
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.Album;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.entity.SelectionSpec;

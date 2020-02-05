@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.zhihu.matisse.sample;
+package com.sobey.matisse.sample;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -23,6 +23,7 @@ import com.sobey.matisse.filter.Filter;
 import com.sobey.matisse.internal.entity.IncapableCause;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.utils.PhotoMetadataUtils;
+import com.sobey.matisse.sample.R;
 
 import java.util.HashSet;
 import java.util.Set;

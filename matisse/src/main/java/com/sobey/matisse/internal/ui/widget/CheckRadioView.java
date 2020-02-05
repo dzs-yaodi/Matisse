@@ -7,7 +7,8 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
-import com.zhihu.matisse.R;
+import com.sobey.matisse.R;
+
 
 public class CheckRadioView extends AppCompatImageView {
 
@@ -30,10 +31,10 @@ public class CheckRadioView extends AppCompatImageView {
 
     private void init() {
         mSelectedColor = ResourcesCompat.getColor(
-                getResources(), R.color.zhihu_item_checkCircle_backgroundColor,
+                getResources(), R.color.sobey_item_checkCircle_backgroundColor,
                 getContext().getTheme());
         mUnSelectUdColor = ResourcesCompat.getColor(
-                getResources(), R.color.zhihu_check_original_radio_disable,
+                getResources(), R.color.sobey_check_original_radio_disable,
                 getContext().getTheme());
         setChecked(false);
     }

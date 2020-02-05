@@ -29,10 +29,10 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.sobey.matisse.MimeType;
+import com.sobey.matisse.R;
 import com.sobey.matisse.filter.Filter;
 import com.sobey.matisse.internal.entity.IncapableCause;
 import com.sobey.matisse.internal.entity.SelectionSpec;
-import com.zhihu.matisse.R;
 import com.sobey.matisse.internal.entity.Item;
 
 import java.io.FileNotFoundException;

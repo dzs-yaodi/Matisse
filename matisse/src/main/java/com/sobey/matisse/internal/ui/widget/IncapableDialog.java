@@ -23,7 +23,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 
-import com.zhihu.matisse.R;
+import com.sobey.matisse.R;
+
 
 public class IncapableDialog extends DialogFragment {
 

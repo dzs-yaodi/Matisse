@@ -28,12 +28,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.Album;
 import com.sobey.matisse.internal.entity.IncapableCause;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.entity.SelectionSpec;
 import com.sobey.matisse.internal.model.SelectedItemCollection;
-import com.zhihu.matisse.R;
 import com.sobey.matisse.internal.ui.widget.CheckView;
 import com.sobey.matisse.internal.ui.widget.MediaGrid;
 

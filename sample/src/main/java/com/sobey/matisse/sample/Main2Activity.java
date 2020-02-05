@@ -1,9 +1,10 @@
-package com.zhihu.matisse.sample;
+package com.sobey.matisse.sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.sobey.matisse.sample.R;
 import com.sobey.matisse.ui.CustomVideoActivity;
 
 public class Main2Activity extends AppCompatActivity {

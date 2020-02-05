@@ -39,7 +39,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.zhihu.matisse.R;
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.Album;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.entity.SelectionSpec;

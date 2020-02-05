@@ -29,6 +29,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.IncapableCause;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.entity.SelectionSpec;
@@ -40,7 +41,6 @@ import com.sobey.matisse.internal.ui.widget.IncapableDialog;
 import com.sobey.matisse.internal.utils.PhotoMetadataUtils;
 import com.sobey.matisse.internal.utils.Platform;
 import com.sobey.matisse.listener.OnFragmentInteractionListener;
-import com.zhihu.matisse.R;
 
 public abstract class BasePreviewActivity extends AppCompatActivity implements View.OnClickListener,
         ViewPager.OnPageChangeListener, OnFragmentInteractionListener {

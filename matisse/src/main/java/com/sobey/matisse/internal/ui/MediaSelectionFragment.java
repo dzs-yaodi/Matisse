@@ -27,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.Album;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.entity.SelectionSpec;
@@ -34,7 +35,6 @@ import com.sobey.matisse.internal.model.AlbumMediaCollection;
 import com.sobey.matisse.internal.model.SelectedItemCollection;
 import com.sobey.matisse.internal.ui.adapter.AlbumMediaAdapter;
 import com.sobey.matisse.internal.utils.UIUtils;
-import com.zhihu.matisse.R;
 import com.sobey.matisse.internal.ui.widget.MediaGridInset;
 
 public class MediaSelectionFragment extends Fragment implements

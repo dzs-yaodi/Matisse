@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.zhihu.matisse.sample;
+package com.sobey.matisse.sample;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sobey.matisse.sample.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.sobey.matisse.Matisse;
 import com.sobey.matisse.MimeType;
@@ -89,7 +90,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                         .countable(true)
                         .capture(true)
                         .captureStrategy(
-                                new CaptureStrategy(true, "com.zhihu.matisse.sample.fileprovider", "test"))
+                                new CaptureStrategy(true, "com.sobey.matisse.sample.fileprovider", "test"))
                         .maxSelectable(1)
                         .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
                         .gridExpectedSize(
@@ -112,7 +113,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.dracula:
                 Matisse.from(SampleActivity.this)
                         .choose(MimeType.ofImage())
-                        .theme(R.style.Matisse_Dracula)
+                        .theme(R.style.Matisse_Dracula_sobey)
                         .countable(false)
                         .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
                         .maxSelectable(9)
@@ -145,7 +146,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                 maps.put("title","地址");
                 Matisse.from(SampleActivity.this)
                         .choose(MimeType.ofVideo())
-                        .theme(R.style.Matisse_Dracula)
+                        .theme(R.style.Matisse_Dracula_sobey)
                         .showSingleMediaType(true)
                         .countable(false)
                         .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
@@ -153,7 +154,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
 //                        .originalEnable(true)
 //                        .maxOriginalSize(10)
                         .imageEngine(new GlideEngine())
-                        .setTurnToClass("com.zhihu.matisse.sample.Main2Activity")
+                        .setTurnToClass("com.sobey.matisse.sample.Main2Activity")
                         .setKeyValues(maps)
                         .forResult(REQUEST_CODE_CHOOSE);
                 break;

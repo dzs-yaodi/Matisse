@@ -27,9 +27,9 @@ import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.Album;
 import com.sobey.matisse.internal.utils.Platform;
-import com.zhihu.matisse.R;
 
 public class AlbumsSpinner {
 

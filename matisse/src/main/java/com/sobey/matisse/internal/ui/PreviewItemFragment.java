@@ -29,11 +29,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.sobey.matisse.R;
 import com.sobey.matisse.internal.entity.Item;
 import com.sobey.matisse.internal.entity.SelectionSpec;
 import com.sobey.matisse.internal.utils.PhotoMetadataUtils;
 import com.sobey.matisse.listener.OnFragmentInteractionListener;
-import com.zhihu.matisse.R;
 
 import it.sephiroth.android.library.imagezoom.ImageViewTouch;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase;
