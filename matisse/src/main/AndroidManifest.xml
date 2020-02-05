@@ -6,10 +6,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
-        <activity android:name=".ui.CustomVideoActivity"></activity>
-        <activity android:name=".ui.MatisseActivity" />
-        <activity android:name=".internal.ui.AlbumPreviewActivity" />
-        <activity android:name=".internal.ui.SelectedPreviewActivity" />
+        <activity android:name="com.sobey.matisse.ui.CustomVideoActivity"></activity>
+        <activity android:name="com.sobey.matisse.ui.MatisseActivity" />
+        <activity android:name="com.sobey.matisse.internal.ui.AlbumPreviewActivity" />
+        <activity android:name="com.sobey.matisse.internal.ui.SelectedPreviewActivity" />
     </application>
 
 </manifest>

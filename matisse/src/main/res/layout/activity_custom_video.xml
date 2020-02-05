@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#000"
-    tools:context=".ui.CustomVideoActivity">
+    tools:context="com.sobey.matisse.ui.CustomVideoActivity">
 
     <!--标题栏-->
     <FrameLayout
@@ -24,7 +24,7 @@
         android:layout_height="400dp"
         >
 
-        <com.zhihu.matisse.ui.CustomVideoView
+        <com.sobey.matisse.ui.CustomVideoView
             android:id="@+id/videoView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
