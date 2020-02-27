@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -56,13 +58,47 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
     private ImageView ivPlay2;
     private SeekBar mSeekBar;
     private TextView tvDuration;
-    private CountDownTimer timer;
     private TextView tvProgress;
     //视频长度
     private int length = 0;
     //需要跳转的页面地址
     private String className;
     private Map<String,String> objectMap = new HashMap<>();
+    private Handler handler = new Handler();
+    private long firstZero;
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int playTimes = videoView.getCurrentPosition() / 1000;
+            if (playTimes == 0 && firstZero == 0){
+                firstZero = System.currentTimeMillis();
+            }
+
+            if (playTimes == length){
+                runOnUiThread(()-> {
+                    tvProgress.setText(DateUtils.formatElapsedTime(length));
+                    mSeekBar.setProgress(length);
+
+                    ivPlay1.setImageResource(R.drawable.matisse_video_play_large);
+                    ivPlay2.setImageResource(R.drawable.matisse_video_play_small);
+                    ivPlay1.setVisibility(View.VISIBLE);
+                    handler.removeCallbacks(runnable);
+                });
+
+            }else{
+                runOnUiThread(()->{
+                    tvProgress.setText(DateUtils.formatElapsedTime(playTimes));
+                    mSeekBar.setProgress(playTimes);
+                });
+            }
+            if (playTimes == 0 && System.currentTimeMillis() - firstZero > 2000){
+                handler.removeCallbacks(runnable);
+            }else {
+                handler.postDelayed(runnable, 1000);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,15 +198,15 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
             customAlbumAdapter.notifyDataSetChanged();
             ivCover.setVisibility(View.GONE);
 
-            setVideoDetails(position);
+            //停止播放视频,并且释放
+            videoView.stopPlayback();
+            //在任何状态下释放媒体播放器
+            videoView.suspend();
+            handler.removeCallbacks(runnable);
 
-            if (timer != null) {
-                timer.cancel();
-                timer = null;
-            }
-
+            setVideoDetails(selectIndex);
             videoState();
-            downTime();
+
         });
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -202,7 +238,8 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
             ivPlay1.setVisibility(View.VISIBLE);
         } else {
             videoView.start();
-            downTime();
+            firstZero = 0;
+            handler.postDelayed(runnable,500);
             ivPlay1.setVisibility(View.GONE);
             ivPlay2.setImageResource(R.drawable.matisse_video_stop_small);
             ivCover.setVisibility(View.GONE);
@@ -225,10 +262,7 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
             videoView.stopPlayback();
         }
 
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
-        }
+        handler.removeCallbacks(runnable);
         super.onDestroy();
     }
 
@@ -291,45 +325,12 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
         videoView.setVideoURI(items.get(index).getContentUri());
         length = (int) (items.get(index).duration / 1000);
         mSeekBar.setMax(length);
+        mSeekBar.setProgress(0);
         tvDuration.setText(DateUtils.formatElapsedTime(items.get(index).duration / 1000));
     }
 
     @Override
     public void onAlbumMediaReset() {
 
-    }
-
-    private void downTime() {
-
-        long videoLength = length * 1000;
-        timer = new CountDownTimer(videoLength, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-                int playTimes = videoView.getCurrentPosition() / 1000;
-
-                if (playTimes >= length) {
-                    tvProgress.setText(DateUtils.formatElapsedTime(length));
-                    if (timer != null) {
-                        timer.cancel();
-                        timer = null;
-                    }
-                } else {
-                    tvProgress.setText(DateUtils.formatElapsedTime(playTimes));
-                    mSeekBar.setProgress(playTimes);
-                }
-            }
-
-            @Override
-            public void onFinish() {
-                tvProgress.setText(DateUtils.formatElapsedTime(length));
-                mSeekBar.setProgress(length);
-                if (timer != null) {
-                    timer.cancel();
-                    timer = null;
-                }
-            }
-        };
-        timer.start();
     }
 }
