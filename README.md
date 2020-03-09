@@ -17,4 +17,4 @@ String path = data.getStringExtra(CustomVideoActivity.EXTRA_RESULT_VIDEO_URI);
 
 maven { url 'https://jitpack.io' }
 
-implementation com.github.dzs-yaodi:Matisse:1.0.2
+implementation com.github.dzs-yaodi:Matisse:1.0.7
