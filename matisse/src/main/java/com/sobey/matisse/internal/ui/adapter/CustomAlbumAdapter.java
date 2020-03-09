@@ -48,7 +48,7 @@ public class CustomAlbumAdapter extends RecyclerView.Adapter<CustomAlbumAdapter.
     @Override
     public CustomAlbumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new CustomAlbumViewHolder(LayoutInflater.from(mContext).inflate(
-                R.layout.item_custom_media_select,parent,false
+                R.layout.sobey_item_custom_media_select,parent,false
         ));
     }
 

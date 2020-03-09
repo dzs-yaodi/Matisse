@@ -51,7 +51,7 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
     }
 
     private void init(Context context) {
-        LayoutInflater.from(context).inflate(R.layout.media_grid_content, this, true);
+        LayoutInflater.from(context).inflate(R.layout.sobey_media_grid_content, this, true);
 
         mThumbnail = (ImageView) findViewById(R.id.media_thumbnail);
         mCheckView = (CheckView) findViewById(R.id.check_view);

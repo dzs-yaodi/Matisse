@@ -12,7 +12,7 @@
         android:id="@+id/view_cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/media_video_slect_bg"
+        android:background="@drawable/sobey_media_video_slect_bg"
         android:visibility="gone"
         />
 

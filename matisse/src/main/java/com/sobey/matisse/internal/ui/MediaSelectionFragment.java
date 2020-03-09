@@ -78,7 +78,7 @@ public class MediaSelectionFragment extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_media_selection, container, false);
+        return inflater.inflate(R.layout.sobey_fragment_media_selection, container, false);
     }
 
     @Override

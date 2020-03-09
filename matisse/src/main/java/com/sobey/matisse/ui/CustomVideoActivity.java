@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +14,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -107,7 +104,7 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
         if (actionBar != null) {
             actionBar.hide();
         }
-        setContentView(R.layout.activity_custom_video);
+        setContentView(R.layout.sobey_activity_custom_video);
 
         //设置沉浸式状态栏
         UIUtils.translucentStatusBar(this, true);

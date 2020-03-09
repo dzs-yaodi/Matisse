@@ -37,7 +37,7 @@
             android:scaleType="center"
             />
 
-        <include layout="@layout/matisse_video_progress_layout"/>
+        <include layout="@layout/sobey_matisse_video_progress_layout"/>
 
     </FrameLayout>
 
