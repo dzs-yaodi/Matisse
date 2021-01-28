@@ -72,6 +72,18 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
                 firstZero = System.currentTimeMillis();
             }
 
+            if (length == 0){
+                length = videoView.getDuration() / 1000;
+                mSeekBar.setMax(length);
+                mSeekBar.setProgress(playTimes);
+                tvDuration.setText(DateUtils.formatElapsedTime(length));
+            }else {
+                String times = tvDuration.getText().toString().trim();
+                String allTime = DateUtils.formatElapsedTime(length);
+                if (!TextUtils.equals(times,allTime)){
+                    tvDuration.setText(DateUtils.formatElapsedTime(length));
+                }
+            }
             if (playTimes == length){
                 runOnUiThread(()-> {
                     tvProgress.setText(DateUtils.formatElapsedTime(length));
@@ -85,14 +97,25 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
 
             }else{
                 runOnUiThread(()->{
-                    tvProgress.setText(DateUtils.formatElapsedTime(playTimes));
-                    mSeekBar.setProgress(playTimes);
+
+                    if (playTimes == 0  && System.currentTimeMillis() - firstZero > 2000 && !videoView.isPlaying()){
+                        tvProgress.setText(DateUtils.formatElapsedTime(length));
+                        mSeekBar.setProgress(length);
+
+                        ivPlay1.setImageResource(R.drawable.matisse_video_play_large);
+                        ivPlay2.setImageResource(R.drawable.matisse_video_play_small);
+                        ivPlay1.setVisibility(View.VISIBLE);
+                        handler.removeCallbacks(runnable);
+                    }else{
+                        tvProgress.setText(DateUtils.formatElapsedTime(playTimes));
+                        mSeekBar.setProgress(playTimes);
+                    }
                 });
             }
             if (playTimes == 0 && System.currentTimeMillis() - firstZero > 2000){
                 handler.removeCallbacks(runnable);
             }else {
-                handler.postDelayed(runnable, 1000);
+                handler.postDelayed(runnable, 500);
             }
         }
     };
@@ -201,6 +224,7 @@ public class CustomVideoActivity extends AppCompatActivity implements AlbumColle
             videoView.suspend();
             handler.removeCallbacks(runnable);
 
+            length = 0;
             setVideoDetails(selectIndex);
             videoState();
 

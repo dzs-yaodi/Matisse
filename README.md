@@ -17,4 +17,6 @@ String path = data.getStringExtra(CustomVideoActivity.EXTRA_RESULT_VIDEO_URI);
 
 maven { url 'https://jitpack.io' }
 
-implementation com.github.dzs-yaodi:Matisse:1.0.2
+implementation com.github.dzs-yaodi:Matisse:1.0.8
+
+1.0.8 适配小米6无法通过cursor读取视频时长的问题
