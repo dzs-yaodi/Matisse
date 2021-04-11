@@ -1,7 +1,7 @@
 # Matisse
 知乎图片视频选择器，降androidx版本，新增视频选择器预览功能
 
-原地址：![https://www.cnblogs.com/longronglang/p/8453047.html](https://www.cnblogs.com/longronglang/p/8453047.html)
+原地址：![https://github.com/zhihu/Matisse](https://github.com/zhihu/Matisse)
 
 因为老项目的原因，把androidx给降级了
 
