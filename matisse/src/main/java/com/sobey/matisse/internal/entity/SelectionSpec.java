@@ -96,6 +96,8 @@ public final class SelectionSpec {
         autoHideToobar = false;
         originalMaxSize = Integer.MAX_VALUE;
         showPreview = true;
+        turnToClass = null;
+        map = null;
     }
 
     public boolean singleSelectionModeEnabled() {
