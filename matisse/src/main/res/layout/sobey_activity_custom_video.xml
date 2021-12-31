@@ -23,21 +23,22 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         >
-<!--        <com.sobey.matisse.ui.CustomVideoView-->
-        <VideoView
-            android:id="@+id/videoView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"/>
 
-        <ImageView
-            android:id="@+id/image_cover"
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/player"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="center"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下一步"
+            android:textColor="#fff"
+            android:layout_gravity="right"
+            android:layout_margin="12dp"
+            android:background="@drawable/sobey_matisse_video_seleect_next_bg"
             />
-
-        <include layout="@layout/sobey_matisse_video_progress_layout"/>
 
     </FrameLayout>
 
