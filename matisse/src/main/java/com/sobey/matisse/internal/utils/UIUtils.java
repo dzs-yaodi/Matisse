@@ -16,6 +16,7 @@
 package com.sobey.matisse.internal.utils;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -143,5 +144,51 @@ public class UIUtils {
         MediaMetadataRetriever media = new MediaMetadataRetriever();
         media.setDataSource(videoPath);
         return media.getFrameAtTime();
+    }
+
+    /**
+     * 视频地址转URI
+     */
+    public static Uri getVideoUriFromPath(Context context, String path) {
+        if (context == null || path == null) {
+            return null;
+        }
+        Uri mediaUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+        Cursor cursor = context.getContentResolver().query(mediaUri,
+                null,
+                MediaStore.Video.Media.DISPLAY_NAME + "= ?",
+                new String[] {path.substring(path.lastIndexOf("/") + 1)},
+                null);
+
+        Uri uri = null;
+        if(cursor.moveToFirst()) {
+            uri = ContentUris.withAppendedId(mediaUri,
+                    cursor.getLong(cursor.getColumnIndex(MediaStore.Video.Media._ID)));
+        }
+        cursor.close();
+        return uri;
+    }
+
+    /**
+     * 视频地址转URI
+     */
+    public static Uri getImageUriFromPath(Context context, String path) {
+        if (context == null || path == null) {
+            return null;
+        }
+        Uri mediaUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        Cursor cursor = context.getContentResolver().query(mediaUri,
+                null,
+                MediaStore.Images.Media.DISPLAY_NAME + "= ?",
+                new String[] {path.substring(path.lastIndexOf("/") + 1)},
+                null);
+
+        Uri uri = null;
+        if(cursor.moveToFirst()) {
+            uri = ContentUris.withAppendedId(mediaUri,
+                    cursor.getLong(cursor.getColumnIndex(MediaStore.Images.Media._ID)));
+        }
+        cursor.close();
+        return uri;
     }
 }

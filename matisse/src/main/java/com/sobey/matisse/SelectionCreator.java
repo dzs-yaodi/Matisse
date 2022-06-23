@@ -26,6 +26,7 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.sobey.matisse.engine.impl.GlideEngine;
 import com.sobey.matisse.engine.impl.PicassoEngine;
@@ -42,6 +43,7 @@ import java.io.Serializable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -381,7 +383,10 @@ public final class SelectionCreator {
         }
         Intent intent = new Intent();
 
-        if (mSelectionSpec.mimeTypeSet.contains(MimeType.MP4)){
+        if (mSelectionSpec.mimeTypeSet.containsAll(EnumSet.allOf(MimeType.class))) {
+            intent.setClass(activity, MatisseActivity.class);
+        } else if (mSelectionSpec.mimeTypeSet.containsAll(MimeType.ofVideo())){
+//        if (mSelectionSpec.mimeTypeSet.contains(MimeType.MP4)){
             intent.setClass(activity, CustomVideoActivity.class);
             if (!TextUtils.isEmpty(mSelectionSpec.turnToClass)) {
                 intent.putExtra("class_name", mSelectionSpec.turnToClass);

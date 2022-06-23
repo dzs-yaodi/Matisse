@@ -112,7 +112,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.dracula:
                 Matisse.from(SampleActivity.this)
-                        .choose(MimeType.ofImage())
+                        .choose(MimeType.ofAll())
                         .theme(R.style.Matisse_Dracula_sobey)
                         .countable(false)
                         .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
@@ -124,8 +124,8 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.only_gif:
                 Matisse.from(SampleActivity.this)
-//                        .choose(MimeType.of(MimeType.GIF), false)
-                        .choose(MimeType.ofVideo())
+                        .choose(MimeType.of(MimeType.GIF), false)
+//                        .choose(MimeType.ofVideo())
                         .countable(true)
                         .maxSelectable(9)
                         .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
