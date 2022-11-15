@@ -383,7 +383,7 @@ public class MatisseActivity extends AppCompatActivity implements
 
     @Override
     public void onAlbumReset() {
-        mAlbumsAdapter.swapCursor(null);
+//        mAlbumsAdapter.swapCursor(null);
     }
 
     private void onAlbumSelected(Album album) {
