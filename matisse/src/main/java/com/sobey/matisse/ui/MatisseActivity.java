@@ -383,7 +383,7 @@ public class MatisseActivity extends AppCompatActivity implements
 
     @Override
     public void onAlbumReset() {
-//        mAlbumsAdapter.swapCursor(null);
+        mAlbumsAdapter.swapCursor(null);
     }
 
     private void onAlbumSelected(Album album) {
@@ -394,6 +394,12 @@ public class MatisseActivity extends AppCompatActivity implements
             mContainer.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             Fragment fragment = MediaSelectionFragment.newInstance(album);
+
+            Fragment oldFragment = getSupportFragmentManager().findFragmentByTag(MediaSelectionFragment.class.getSimpleName());
+            if (oldFragment instanceof MediaSelectionFragment) {
+                ((MediaSelectionFragment) oldFragment).destroyManagerLoader();
+            }
+
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, fragment, MediaSelectionFragment.class.getSimpleName())
