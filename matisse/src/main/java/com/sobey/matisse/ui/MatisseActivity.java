@@ -386,6 +386,7 @@ public class MatisseActivity extends AppCompatActivity implements
         mAlbumsAdapter.swapCursor(null);
     }
 
+    private Fragment fragment;
     private void onAlbumSelected(Album album) {
         if (album.isAll() && album.isEmpty()) {
             mContainer.setVisibility(View.GONE);
@@ -393,17 +394,29 @@ public class MatisseActivity extends AppCompatActivity implements
         } else {
             mContainer.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
-            Fragment fragment = MediaSelectionFragment.newInstance(album);
 
-            Fragment oldFragment = getSupportFragmentManager().findFragmentByTag(MediaSelectionFragment.class.getSimpleName());
-            if (oldFragment instanceof MediaSelectionFragment) {
-                ((MediaSelectionFragment) oldFragment).destroyManagerLoader();
+            if (fragment != null) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .remove(fragment)
+                        .commitAllowingStateLoss();
             }
 
+            fragment = MediaSelectionFragment.newInstance(album);
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container, fragment, MediaSelectionFragment.class.getSimpleName())
+                    .add(R.id.container, fragment, MediaSelectionFragment.class.getSimpleName())
                     .commitAllowingStateLoss();
+
+//            Fragment oldFragment = getSupportFragmentManager().findFragmentByTag(MediaSelectionFragment.class.getSimpleName());
+//            if (oldFragment instanceof MediaSelectionFragment) {
+//                ((MediaSelectionFragment) oldFragment).destroyManagerLoader();
+//            }
+//
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.container, fragment, MediaSelectionFragment.class.getSimpleName())
+//                    .commitAllowingStateLoss();
         }
     }
 

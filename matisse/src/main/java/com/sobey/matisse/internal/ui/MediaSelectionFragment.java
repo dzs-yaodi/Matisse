@@ -120,10 +120,6 @@ public class MediaSelectionFragment extends Fragment implements
         mAlbumMediaCollection.onDestroy();
     }
 
-    public void destroyManagerLoader() {
-        mAlbumMediaCollection.onDestroy();
-    }
-
     public void refreshMediaGrid() {
         mAdapter.notifyDataSetChanged();
     }
